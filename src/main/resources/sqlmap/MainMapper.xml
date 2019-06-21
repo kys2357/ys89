@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 맵핑될 DAO 인터페이스의 Full name 을 줍니다. -->
+<mapper namespace="com.project.api.mapper.MainMapper">
+	
+	<!--API Map  -->
+	<resultMap id="selectApiListMap" type="java.util.HashMap">
+		<result property="year"       column="YEAR" />
+		<result property="acctNo"     column="ACCT_NO" />
+		<result property="name"       column="NAME" />
+		<result property="sumAmt"     column="SUM_AMT" />
+		<result property="brName"     column="BR_NAME" />
+		<result property="brCode"     column="BR_CODE" />
+	</resultMap>
+	
+	<!--API1 조회  -->
+	<select id="selectApi1List" resultMap="selectApiListMap" parameterType="java.util.Map" > 
+    SELECT   A.YEAR
+           , A.ACCT_NO
+           , B.NAME
+           , A.SUM_AMT
+      FROM   ( SELECT   A1.YEAR
+                      , A1.ACCT_NO
+                      , A1.SUM_AMT
+                      , CASE @GROUPING WHEN A1.YEAR THEN @RANKT := @RANK + 1 ELSE @RANK := 1 END AS RANKING
+                      , (@GROUPING:=A1.YEAR) AS GROUPING
+                 FROM   ( SELECT   LEFT(DEAL_DT,4) AS YEAR
+                                 , ACCT_NO
+                                 , SUM(AMT) - SUM(FEE) AS SUM_AMT
+                            FROM   DATA_DEAL_LIST
+                           WHERE   CNCL_YN = 'N'
+                        GROUP BY   LEFT(DEAL_DT,4) ,ACCT_NO
+                        ) A1
+                      , (SELECT @GROUPING := '', @RANK := 0) A2
+             ORDER BY   A1.YEAR,A1.SUM_AMT DESC
+             ) A
+      JOIN   DATA_BNAC_INFO B ON A.ACCT_NO = B.ACCT_NO
+     WHERE   A.RANKING = 1
+  ORDER BY   A.YEAR
+	</select>
+	
+	<!--API2 조회  -->
+	<select id="selectApi2List" resultMap="selectApiListMap" parameterType="java.util.Map" > 
+    SELECT   A.YEAR
+           , A.NAME
+           , A.ACCT_NO
+      FROM   ( SELECT   A2.YEAR
+                      , A1.NAME
+                      , A1.ACCT_NO
+                 FROM   DATA_BNAC_INFO A1
+                      , ( SELECT  LEFT(DEAL_DT, 4) AS YEAR
+                            FROM  DATA_DEAL_LIST
+                        GROUP BY  LEFT(DEAL_DT, 4)
+                        ) A2
+             ) A
+ LEFT OUTER JOIN
+             ( SELECT   LEFT(B2.DEAL_DT, 4) AS YEAR
+                      , B2.ACCT_NO
+                      , SUM(B2.AMT) - SUM(B2.FEE) AS SUM_AMT
+                 FROM   DATA_BNAC_INFO B1
+      LEFT OUTER JOIN   DATA_DEAL_LIST B2 ON B1.ACCT_NO = B2.ACCT_NO
+                WHERE   B2.CNCL_YN = 'N'
+             GROUP BY   LEFT(B2.DEAL_DT, 4), B2.ACCT_NO
+             ) B ON A.ACCT_NO = B.ACCT_NO
+                AND A.YEAR    = B.YEAR
+     WHERE   B.YEAR IS NULL
+  ORDER BY   A.YEAR, A.ACCT_NO
+	</select>
+	
+	<!--API3 조회  -->
+	<select id="selectApi3List" resultMap="selectApiListMap" parameterType="java.util.Map" > 
+    SELECT   LEFT(C.DEAL_DT,4) AS YEAR
+           , B.BR_NAME
+           , B.BR_CODE
+           , SUM(C.AMT) - SUM(C.FEE) AS SUM_AMT
+      FROM   DATA_BNAC_INFO A
+      JOIN   DATA_MNGM_INFO B ON A.BR_CODE = B.BR_CODE
+      JOIN   DATA_DEAL_LIST C ON A.ACCT_NO = C.ACCT_NO
+     WHERE   C.CNCL_YN = 'N'
+  GROUP BY   LEFT(C.DEAL_DT,4),B.BR_CODE,B.BR_NAME
+  ORDER BY   YEAR,SUM_AMT DESC
+	</select>
+	
+	<!--API4 조회  -->
+	<select id="selectApi4List" resultMap="selectApiListMap" parameterType="java.util.Map" > 
+    SELECT   M.BR_NAME
+           , M.BR_CODE
+           , SUM(M.SUM_AMT) AS SUM_AMT
+      FROM   ( SELECT   SUM(C.AMT) - SUM(C.FEE) AS SUM_AMT
+                      , IF(B.TRSF_CD ='',B.BR_CODE,B.TRSF_CD) AS BR_CODE
+                      , IF(B.TRSF_CD ='',B.BR_NAME,D.BR_NAME) AS BR_NAME
+                 FROM   DATA_BNAC_INFO A
+                 JOIN   DATA_MNGM_INFO B ON A.BR_CODE = B.BR_CODE
+                 JOIN   DATA_DEAL_LIST C ON A.ACCT_NO = C.ACCT_NO
+      LEFT OUTER JOIN   DATA_MNGM_INFO D ON B.TRSF_CD = D.BR_CODE
+                WHERE   C.CNCL_YN = 'N'
+             GROUP BY   B.BR_CODE ,B.BR_NAME ,B.TRSF_CD ,D.BR_NAME
+             ) M
+     WHERE   1 = 1
+       AND   BR_NAME = #{brName, jdbcType=VARCHAR}
+  GROUP BY   M.BR_CODE ,M.BR_NAME
+	</select>
+</mapper>
