@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=euc-kr"/>
 <title>특정 고객 거래내역 조회 서비스</title>
 </head>
-<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 var str1 = ""; // div Api1 문자열
 var str2 = ""; // div Api2 문자열
