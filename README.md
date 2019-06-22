@@ -78,7 +78,9 @@
       9. 아무 값을 입력하지 않거나 기타 관리점명과 일치하지 않는 검색어를 입력했을 때도 동일한 메세지를 출력하도록 처리함
       
   * 단위 테스트(Unit Test)
-    * 11
+    * Api1부터 Api4에 대해서 검증을 처리하였으며 출력이 JSON으로 변환되어 나오는지에 대한 검증을 처리함.
+    * STS4에서 제공하는 라이브러리로 JUnit을 통해 test 과정을 거침.
+    * [src/main/java/com/project/api/controller(https://github.com/kys2357/ys89/tree/master/src/main/java/com/project/api/controller)/MainControllerTest.java
   
 * 빌드 및 실행 방법
   * 화면 최초로드시 화면
