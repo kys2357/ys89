@@ -93,3 +93,7 @@
   </welcome-file> 파일을 호출하게 되는데 [/WEB-INF/views](https://github.com/kys2357/ys89/tree/master/src/main/webapp/WEB-INF/views)/main.jsp 경로에 있는 main.jsp를 로드하도록 설정함
     * 로컬에서 테스트를 할 때는 Kys_project 프로젝트를 톰캣을 통하여 서버를 기동시켜 구현하였고<br>
     cafe24 연동시에는 Kys_project 프로젝트를 확장자 war를 FTP로 배포하여 ./shutdown.sh 과 ./startup.sh 명령을 통하여 was를 기동함
+
+* 주요 소스경로
+  * [화면 최초로드시 화면 main.jsp](https://github.com/kys2357/ys89/tree/master/src/main/webapp/WEB-INF/views)
+    
