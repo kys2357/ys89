@@ -1,7 +1,5 @@
 ## [특정 고객 거래내역 조회 서비스 개발]
 ### [참조 링크]: http://www.ys89.kr/ysb
-<a href="http://www.ys89.kr/ysb" onclick="window.open(this.href, '_blank'); return false;">클릭</a>
-<a href="http://www.naver.com/" target="_blank">d</a>
 
 * 개발 프레임워크(사용언어)
   * 화면
