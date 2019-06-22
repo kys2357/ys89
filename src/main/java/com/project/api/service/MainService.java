@@ -1,7 +1,5 @@
 package com.project.api.service;
 
-import java.util.Map;
-
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -27,7 +25,8 @@ public interface MainService {
 	
 	/** 
      * @Description : Api4 조회
+     * @param : JSONObject
      * @return JSONArray
      */
-	JSONArray selectApi4List(Map<String, Object> param) throws Exception;
+	JSONArray selectApi4List(JSONObject param) throws Exception;
 }
