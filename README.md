@@ -95,5 +95,5 @@
     cafe24 연동시에는 Kys_project 프로젝트를 확장자 war를 FTP로 배포하여 ./shutdown.sh 과 ./startup.sh 명령을 통하여 was를 기동함
 
 * 주요 소스경로
-  * [화면 최초로드시 화면 main.jsp](https://github.com/kys2357/ys89/tree/master/src/main/webapp/WEB-INF/views)
+  * 최초로드시 화면 -> [main.jsp](https://github.com/kys2357/ys89/tree/master/src/main/webapp/WEB-INF/views)
     
