@@ -95,5 +95,10 @@
     cafe24 연동시에는 Kys_project 프로젝트를 확장자 war를 FTP로 배포하여 ./shutdown.sh 과 ./startup.sh 명령을 통하여 was를 기동함
 
 * 주요 소스경로
-  * 최초로드시 화면 -> [main.jsp](https://github.com/kys2357/ys89/tree/master/src/main/webapp/WEB-INF/views)
+  * 최초로드시 화면 -> [main.jsp](https://github.com/kys2357/ys89/tree/master/src/main/webapp/WEB-INF/views/main.jsp)
+  * Controller -> [MainController.java](https://github.com/kys2357/ys89/tree/master/src/main/java/com/project/api/controller/MainController.java)
+  * Service -> [MainService.java](https://github.com/kys2357/ys89/tree/master/src/main/java/com/project/api/service/MainService.java)
+  * ServiceImpl -> [MainServiceImpl.java](https://github.com/kys2357/ys89/tree/master/src/main/java/com/project/api/service/impl/MainServiceImpl.java)
+  * Mapper -> [MainMapper.java](https://github.com/kys2357/ys89/tree/master/src/main/java/com/project/api/mapper/MainMapper.java)
+  * xml -> [MainMapper.xml](https://github.com/kys2357/ys89/blob/master/src/main/resources/sqlmap/MainMapper.xml)
     
