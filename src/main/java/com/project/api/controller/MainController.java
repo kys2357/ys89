@@ -1,7 +1,5 @@
 package com.project.api.controller;
 
-import java.util.Map;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -45,7 +43,7 @@ public class MainController {
 	
 	/** 
      * @Description : Api3 조회
-     * @return JSONArray
+     * @return JSONObject
      */
 	@ResponseBody
 	@RequestMapping(value = "/api3Search.do", method = RequestMethod.POST)
@@ -56,11 +54,13 @@ public class MainController {
 	
 	/** 
      * @Description : Api1 조회
+     * @param : JSONObject
      * @return JSONArray
      */
 	@ResponseBody
 	@RequestMapping(value = "/api4Search.do", method = RequestMethod.POST)
-	public JSONArray selectApi4List(@RequestBody Map<String, Object> param) throws Exception {
+	public JSONArray selectApi4List(@RequestBody JSONObject param) throws Exception {
+		System.out.println(param);
 		JSONArray jsonArray = mainService.selectApi4List(param);
 		return jsonArray;
 	}
