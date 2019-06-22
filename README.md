@@ -82,7 +82,8 @@
     * STS4에서 제공하는 라이브러리로 JUnit을 통해 test 과정을 거침
     * [src/main/java/com/project/api/controller](https://github.com/kys2357/ys89/tree/master/src/main/java/com/project/api/controller)
       /MainControllerTest.java 경로에 있는 파일을 통해 테스트를<br>
-      하였으며 리턴된 List<Map<String, Object>>의 데이터가 값이 변하지 않고 json 형식으로 정상적으로 변환이 되는지 assertSame 함수를 통하여 테스트를 수행함.
+      하였으며 리턴된 List<Map<String, Object>>의 데이터가 값이 변하지 않고 json 형식으로 정상적으로<br>
+      변환이 되는지 assertSame 함수를 통하여 테스트를 수행함.
       
   
 * 빌드 및 실행 방법
