@@ -95,10 +95,11 @@ public class MainServiceImpl implements MainService {
 
 	/** 
      * @Description : Api4 조회
+     * @param : JSONObject
      * @return JSONArray
      */
 	@Override
-    public JSONArray selectApi4List(Map<String, Object> param) {
+    public JSONArray selectApi4List(JSONObject param) {
 		
 		List<Map<String, Object>> list = mainMapper.selectApi4List(param);
 		// 조회 결과가 없으면 [br code not found error] 메세지를 넘김.
