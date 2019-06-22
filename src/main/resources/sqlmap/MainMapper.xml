@@ -57,7 +57,6 @@
  LEFT OUTER JOIN
              ( SELECT   LEFT(B2.DEAL_DT, 4) AS YEAR
                       , B2.ACCT_NO
-                      , SUM(B2.AMT) - SUM(B2.FEE) AS SUM_AMT
                  FROM   DATA_BNAC_INFO B1
       LEFT OUTER JOIN   DATA_DEAL_LIST B2 ON B1.ACCT_NO = B2.ACCT_NO
                 WHERE   B2.CNCL_YN = 'N'
