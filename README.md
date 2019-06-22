@@ -1,5 +1,6 @@
 ## [특정 고객 거래내역 조회 서비스 개발]
 ### [참조 링크]: http://www.ys89.kr/ysb
+<p><a href = "http://www.ys89.kr/ysb" target=_blank>참조 링크</a></p>
 
 * 개발 프레임워크(사용언어)
   * 화면
