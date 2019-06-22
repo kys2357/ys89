@@ -26,7 +26,7 @@
     * 모든 입/출력은 JSON 형태로 주고 받도록 처리하기 위해서 통신방식을 Ajax를 이용<br>
     -> jQuery 라이브러리를 사용. POST방식으로 서비스 호출
     * 도메인을 url로 연결하기 위하여 cafe24 호스팅 서비스를 이용하였고 최초 개발 당시에는 DBMS가 오라클(Oracle)이었지만 카페24에서 제공하는 DBMS가 MySQL이기 때문에 Conversion 작업을 처리
-    * DB연동은 [Kys_project/src/main/webapp/WEB-INF/spring](https://github.com/kys2357/ys89/tree/master/src/main/webapp/WEB-INF/spring)/root-context.xml에 로컬에서 테스트 할 때는<br>
+    * DB연동은 [src/main/webapp/WEB-INF/spring](https://github.com/kys2357/ys89/tree/master/src/main/webapp/WEB-INF/spring)/root-context.xml에 로컬에서 테스트 할 때는<br>
     로컬에 있는 데이터베이스를 연결해주었고 cafe24를 통하여 호스팅을 연동할 때는 연동 사이트의 주소와<br>
     아이디 비번을 설정하여 연동함
     * JSON형식으로 출력하기 위하여 XML에서 Service로 리턴된 값을 JSON으로 변환 후에 화면으로 리턴함
@@ -79,7 +79,7 @@
   
 * 빌드 및 실행 방법
   * 화면 최초로드시 화면
-    * WAS가 기동되고 나서 경로 [Kys_project\src\main\webapp\WEB-INF](https://github.com/kys2357/ys89/tree/master/src/main/webapp/WEB-INF)
+    * WAS가 기동되고 나서 경로 [src/main/webapp/WEB-INF](https://github.com/kys2357/ys89/tree/master/src/main/webapp/WEB-INF)
     \web.xml에 <welcome-file-list>에 있는<br>
   </welcome-file> 파일을 호출하게 되는데 [/WEB-INF/views](https://github.com/kys2357/ys89/tree/master/src/main/webapp/WEB-INF/views)/main.jsp 경로에 있는 main.jsp를 로드하도록 설정함
     * 로컬에서 테스트를 할 때는 Kys_project 프로젝트를 톰캣을 통하여 서버를 기동시켜 구현하였고<br>
