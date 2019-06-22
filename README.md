@@ -1,6 +1,10 @@
 ## [특정 고객 거래내역 조회 서비스 개발]
 ### [참조 링크]: http://www.ys89.kr/ysb
 
+### [참조 링크1]:https://github.com/kys2357/ys89/tree/master/src/main/webapp/WEB-INF
+### [참조 링크2]:https://github.com/kys2357/ys89/tree/master/src/main/webapp/WEB-INF/spring
+### [참조 링크3]:https://github.com/kys2357/ys89/tree/master/src/main/webapp/WEB-INF/views
+
 * 개발 프레임워크(사용언어)
   * 화면
     * JSP(Java Server Pages)
