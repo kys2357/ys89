@@ -7,6 +7,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import net.sf.json.JSONObject;
+
 @Repository("MainMapper")
 public class MainMapper {
 	
@@ -15,7 +17,7 @@ public class MainMapper {
 	
     /** 
      * @Description : Api1 조회
-     * @return JSONArray
+     * @return List<Map<String, Object>>
      */
 	public List<Map<String, Object>> selectApi1List() {
         return sqlSession.selectList("selectApi1List");
@@ -23,7 +25,7 @@ public class MainMapper {
 	
 	/** 
      * @Description : Api2 조회
-     * @return JSONArray
+     * @return List<Map<String, Object>>
      */
 	public List<Map<String, Object>> selectApi2List() {
         return sqlSession.selectList("selectApi2List");
@@ -31,7 +33,7 @@ public class MainMapper {
 	
 	/** 
      * @Description : Api3 조회
-     * @return JSONArray
+     * @return List<Map<String, Object>>
      */
 	public List<Map<String, Object>> selectApi3List() {
         return sqlSession.selectList("selectApi3List");
@@ -39,9 +41,10 @@ public class MainMapper {
 	
 	/** 
      * @Description : Api4 조회
-     * @return JSONArray
+     * @param : JSONObject
+     * @return List<Map<String, Object>>
      */
-	public List<Map<String, Object>> selectApi4List(Map<String, Object> param) {
+	public List<Map<String, Object>> selectApi4List(JSONObject param) {
         return sqlSession.selectList("selectApi4List", param);
     }
 }
